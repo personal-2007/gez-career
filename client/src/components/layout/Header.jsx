@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Bell, Briefcase, MessageCircle } from 'lucide-react';
+import { Search, Bell, Briefcase, MessageCircle, Menu, PanelLeftClose, PanelLeftOpen, X } from 'lucide-react';
 import Avatar from '../common/Avatar';
 
-export const Header = () => {
+export const Header = ({ sidebarCollapsed, sidebarOpen, onToggleSidebar }) => {
   return (
     <header style={{
       height: '70px',
@@ -15,6 +15,20 @@ export const Header = () => {
       padding: '0 24px'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '24px', width: '100%' }}>
+        <button
+          type="button"
+          className="sidebar-toggle"
+          aria-label={sidebarOpen ? 'Close navigation' : sidebarCollapsed ? 'Expand navigation' : 'Minimize navigation'}
+          title={sidebarOpen ? 'Close navigation' : sidebarCollapsed ? 'Expand navigation' : 'Minimize navigation'}
+          onClick={onToggleSidebar}
+        >
+          <span className="sidebar-toggle-desktop">
+            {sidebarCollapsed ? <PanelLeftOpen size={19} /> : <PanelLeftClose size={19} />}
+          </span>
+          <span className="sidebar-toggle-mobile">
+            {sidebarOpen ? <X size={21} /> : <Menu size={21} />}
+          </span>
+        </button>
         <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: '180px' }}>
           <div style={{
             width: '38px', height: '38px', borderRadius: '12px',

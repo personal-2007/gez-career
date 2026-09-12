@@ -9,17 +9,19 @@ export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     setLoading(true);
     try {
-      await login(email, password);
+      await login(email.trim(), password);
       navigate('/dashboard');
     } catch (err) {
-      console.error(err);
+      setError(err.message || 'Unable to sign in. Check your details and try again.');
     } finally {
       setLoading(false);
     }
@@ -43,6 +45,12 @@ export const Login = () => {
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <Input label="Email Address" icon={Mail} type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="you@example.com" />
           <Input label="Password" icon={Lock} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Enter password" />
+
+          {error && (
+            <div role="alert" style={{ border: '1px solid #fecaca', background: '#fef2f2', color: '#b91c1c', borderRadius: '8px', padding: '10px 12px', fontSize: '0.85rem' }}>
+              {error}
+            </div>
+          )}
 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem' }}>
             <Link to="/auth/forgot-password" style={{ color: '#2563eb', fontWeight: 600 }}>Forgot password?</Link>

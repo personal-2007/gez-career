@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, Search, Briefcase, FileText, Users, MessageCircle, Bell, User, DollarSign, BookOpen, Settings } from 'lucide-react';
 
-export const Sidebar = () => {
+export const Sidebar = ({ collapsed = false, open = false, onNavigate }) => {
   const menuItems = [
     { label: 'Home', path: '/dashboard', icon: LayoutDashboard },
     { label: 'Jobs', path: '/jobs/search', icon: Search },
@@ -17,7 +17,7 @@ export const Sidebar = () => {
   ];
 
   return (
-    <aside className="app-sidebar" style={{
+    <aside className={`app-sidebar${collapsed ? ' is-collapsed' : ''}${open ? ' is-open' : ''}`} style={{
       width: '240px',
       minHeight: 'calc(100vh - 70px)',
       background: 'rgba(255,255,255,0.72)',
@@ -25,7 +25,7 @@ export const Sidebar = () => {
       borderRight: '1px solid rgba(148, 163, 184, 0.22)',
       padding: '24px 16px', display: 'flex', flexDirection: 'column', gap: '6px'
     }}>
-      <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748b', paddingLeft: '12px', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+      <div className="sidebar-heading" style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748b', paddingLeft: '12px', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
         Navigation
       </div>
       {menuItems.map((item, idx) => {
@@ -34,6 +34,7 @@ export const Sidebar = () => {
           <NavLink
             key={idx}
             to={item.path}
+            onClick={onNavigate}
             style={({ isActive }) => ({
               display: 'flex', alignItems: 'center', gap: '12px',
               padding: '10px 14px', borderRadius: '12px',
@@ -45,7 +46,7 @@ export const Sidebar = () => {
             })}
           >
             <Icon size={18} />
-            <span>{item.label}</span>
+            <span className="sidebar-label">{item.label}</span>
           </NavLink>
         );
       })}

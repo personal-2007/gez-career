@@ -5,6 +5,56 @@
   }
 }
 
+.sidebar-toggle {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  color: #334155;
+  cursor: pointer;
+}
+
+.sidebar-toggle:hover {
+  background: #f1f5f9;
+  color: var(--primary);
+}
+
+.sidebar-toggle-mobile {
+  display: none;
+}
+
+.app-sidebar {
+  flex: 0 0 240px;
+  transition: flex-basis var(--motion-base) ease, width var(--motion-base) ease, transform var(--motion-base) ease;
+}
+
+.app-sidebar.is-collapsed {
+  flex-basis: 76px !important;
+  width: 76px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.app-sidebar.is-collapsed .sidebar-heading,
+.app-sidebar.is-collapsed .sidebar-label {
+  display: none;
+}
+
+.app-sidebar.is-collapsed a {
+  justify-content: center;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .app-shell {
     max-width: 100%;
@@ -16,6 +66,80 @@
 }
 
 @media (max-width: 767px) {
+  .sidebar-toggle-desktop {
+    display: none;
+  }
+
+  .sidebar-toggle-mobile {
+    display: inline-flex;
+  }
+
+  .app-sidebar,
+  .app-sidebar.is-collapsed {
+    position: fixed;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    z-index: 60;
+    width: 264px !important;
+    min-height: 0;
+    flex-basis: 264px !important;
+    padding: 24px 16px !important;
+    transform: translateX(-105%);
+    box-shadow: 8px 0 24px rgba(15, 23, 42, 0.12);
+  }
+
+  .app-sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .app-sidebar.is-collapsed .sidebar-heading,
+  .app-sidebar.is-collapsed .sidebar-label {
+    display: block;
+  }
+
+  .app-sidebar.is-collapsed a {
+    justify-content: flex-start;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 70px 0 0;
+    z-index: 55;
+    border: 0;
+    background: rgba(15, 23, 42, 0.32);
+    cursor: pointer;
+  }
+
+  .app-shell header {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .app-shell header > div:first-of-type > a {
+    min-width: 0 !important;
+  }
+
+  .app-shell header > div:first-of-type > a span {
+    display: none;
+  }
+
+  .app-shell header > div:first-of-type > div {
+    display: none;
+  }
+
+  .app-shell header > div:last-child {
+    gap: 12px !important;
+    margin-left: 8px !important;
+  }
+
+  .app-shell header > div:last-child a:nth-child(2) {
+    display: none;
+  }
+
   .hide-mobile {
     display: none !important;
   }

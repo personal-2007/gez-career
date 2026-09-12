@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { UserProvider } from './context/UserContext';
@@ -12,15 +12,43 @@ import Footer from './components/layout/Footer';
 
 const AppLayout = () => {
   const location = useLocation();
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const isPublicOrAuth = ['/', '/splash', '/landing', '/about', '/features', '/pricing', '/countries', '/companies', '/contact'].includes(location.pathname) ||
     location.pathname.startsWith('/auth') || location.pathname.startsWith('/onboarding');
 
   return (
     <div className="app-shell" style={{ background: isPublicOrAuth ? '#f8fafc' : '#f8fafc' }}>
-      {!isPublicOrAuth && <Header />}
+      {!isPublicOrAuth && (
+        <Header
+          sidebarCollapsed={sidebarCollapsed}
+          sidebarOpen={sidebarOpen}
+          onToggleSidebar={() => {
+            if (window.innerWidth <= 767) {
+              setSidebarOpen((open) => !open);
+            } else {
+              setSidebarCollapsed((collapsed) => !collapsed);
+            }
+          }}
+        />
+      )}
 
       <div style={{ display: 'flex', flex: 1, width: '100%' }}>
-        {!isPublicOrAuth && <Sidebar />}
+        {!isPublicOrAuth && (
+          <Sidebar
+            collapsed={sidebarCollapsed}
+            open={sidebarOpen}
+            onNavigate={() => setSidebarOpen(false)}
+          />
+        )}
+        {!isPublicOrAuth && sidebarOpen && (
+          <button
+            type="button"
+            className="sidebar-overlay"
+            aria-label="Close navigation"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
         <main style={{
           flex: 1,
           minWidth: 0,
