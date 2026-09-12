@@ -5,14 +5,8 @@ import { authService } from '../services/authService';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(() => getItem('user') || {
-    id: 'usr_candidate_1',
-    name: 'Alex Rivera',
-    email: 'alex.developer@gezcareer.com',
-    role: 'candidate',
-    title: 'Senior Full Stack & AI Specialist'
-  });
-  const [token, setToken] = useState(() => getItem('token') || 'demo_jwt_token_2026');
+  const [user, setUser] = useState(() => getItem('user'));
+  const [token, setToken] = useState(() => getItem('token'));
 
   const login = async (email, password) => {
     try {

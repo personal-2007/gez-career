@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 // Public Pages
+import Splash from '../pages/public/Splash';
 import Landing from '../pages/public/Landing';
 import About from '../pages/public/About';
 import Features from '../pages/public/Features';
@@ -151,7 +152,9 @@ export const AppRoutes = () => {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<Navigate to="/splash" replace />} />
+      <Route path="/splash" element={<Splash />} />
+      <Route path="/landing" element={<Landing />} />
       <Route path="/about" element={<About />} />
       <Route path="/features" element={<Features />} />
       <Route path="/pricing" element={<Pricing />} />

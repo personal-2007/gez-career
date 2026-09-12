@@ -5,6 +5,7 @@ const { connectDB } = require('./config/database');
 const config = require('./config/environment');
 const logger = require('./utils/logger');
 const seedDatabase = require('../database/seed/index');
+const { seedAdmin } = require('./scripts/seedAdmin');
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -36,7 +37,8 @@ const startServer = async () => {
   try {
     await connectDB();
     await seedDatabase();
-    
+    await seedAdmin();
+
     server.listen(config.port, () => {
       logger.info(`==================================================`);
       logger.info(`🚀 GEZ Career API & Socket.IO Server running on port ${config.port}`);

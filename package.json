@@ -10,6 +10,7 @@
     "client:build": "npm --prefix client run build",
     "dev": "node server/server.js",
     "seed": "node database/seed/index.js",
+    "seed:admin": "node server/scripts/seedAdmin.js",
     "test": "node tests/server/api.test.js"
   },
   "keywords": [

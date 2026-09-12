@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const path = require('path');
 const corsOptions = require('./config/cors');
 const { errorHandler, notFound } = require('./middleware/errorMiddleware');
@@ -19,8 +21,20 @@ const notificationRoutes = require('./routes/notificationRoutes');
 const recruiterRoutes = require('./routes/recruiterRoutes');
 
 const app = express();
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 200,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    success: false,
+    message: 'Too many requests. Please try again later.'
+  }
+});
 
+app.use(helmet({ crossOriginResourcePolicy: false }));
 app.use(cors(corsOptions));
+app.use('/api/', apiLimiter);
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 

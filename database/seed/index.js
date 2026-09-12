@@ -1,4 +1,5 @@
 const { dbInstance } = require('../../server/config/database');
+const { seedAdmin } = require('../../server/scripts/seedAdmin');
 const mockJobs = require('./jobsSeed');
 const mockCompanies = require('./companiesSeed');
 const mockUsers = require('./usersSeed');
@@ -95,6 +96,8 @@ const seedDatabase = async () => {
       timestamp: '1 day ago'
     }
   ];
+
+  await seedAdmin();
 
   console.log(`[GEZ SEEDER] Seeded: ${dbInstance.jobs.length} jobs, ${dbInstance.companies.length} companies, ${dbInstance.users.length} users.`);
   return true;

@@ -12,22 +12,29 @@ import Footer from './components/layout/Footer';
 
 const AppLayout = () => {
   const location = useLocation();
-  const isPublicOrAuth = ['/', '/about', '/features', '/pricing', '/countries', '/companies', '/contact'].includes(location.pathname) ||
+  const isPublicOrAuth = ['/', '/splash', '/landing', '/about', '/features', '/pricing', '/countries', '/companies', '/contact'].includes(location.pathname) ||
     location.pathname.startsWith('/auth') || location.pathname.startsWith('/onboarding');
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-dark)' }}>
+    <div className="app-shell" style={{ background: isPublicOrAuth ? '#f8fafc' : '#f8fafc' }}>
       {!isPublicOrAuth && <Header />}
-      
-      <div style={{ display: 'flex', flex: 1 }}>
+
+      <div style={{ display: 'flex', flex: 1, width: '100%' }}>
         {!isPublicOrAuth && <Sidebar />}
-        <main style={{ flex: 1, minWidth: 0, paddingBottom: isPublicOrAuth ? 0 : '80px' }}>
+        <main style={{
+          flex: 1,
+          minWidth: 0,
+          width: '100%',
+          maxWidth: isPublicOrAuth ? 'none' : '1440px',
+          margin: isPublicOrAuth ? '0' : '0 auto',
+          paddingBottom: isPublicOrAuth ? 0 : '88px'
+        }}>
           <AppRoutes />
         </main>
       </div>
 
       {!isPublicOrAuth && <MobileNavbar />}
-      <Footer />
+      {!isPublicOrAuth && <Footer />}
     </div>
   );
 };

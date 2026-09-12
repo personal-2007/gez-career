@@ -1,13 +1,12 @@
+const bcrypt = require('bcryptjs');
+
 const hashPassword = async (password) => {
-  // Simple hash mock/implementation for reliability
-  return `hashed_${password}_secret`;
+  const salt = await bcrypt.genSalt(10);
+  return bcrypt.hash(password, salt);
 };
 
 const comparePassword = async (enteredPassword, storedHash) => {
-  if (storedHash === `hashed_${enteredPassword}_secret` || storedHash === enteredPassword) {
-    return true;
-  }
-  return false;
+  return bcrypt.compare(enteredPassword, storedHash);
 };
 
 module.exports = { hashPassword, comparePassword };

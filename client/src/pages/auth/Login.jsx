@@ -6,8 +6,8 @@ import Button from '../../components/common/Button';
 import { useAuth } from '../../hooks/useAuth';
 
 export const Login = () => {
-  const [email, setEmail] = useState('alex.developer@gezcareer.com');
-  const [password, setPassword] = useState('password123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -26,35 +26,40 @@ export const Login = () => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
-      <div className="glass-card" style={{ padding: '36px', width: '100%', maxWidth: '440px' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', background: 'linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%)' }}>
+      <div className="glass-card" style={{ padding: '36px', width: '100%', maxWidth: '440px', borderRadius: '20px' }}>
         <div style={{ textAlign: 'center', marginBottom: '28px' }}>
           <div style={{
-            width: '44px', height: '44px', borderRadius: '12px',
-            background: 'linear-gradient(135deg, #6366f1, #a855f7)',
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px'
+            width: '52px', height: '52px', borderRadius: '14px',
+            background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px'
           }}>
             <Sparkles size={24} color="#fff" />
           </div>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff' }}>Welcome Back</h2>
-          <p style={{ color: '#94a3b8', fontSize: '0.875rem', marginTop: '4px' }}>Sign in to access your GEZ AI Career Suite</p>
+          <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0f172a' }}>Welcome back</h2>
+          <p style={{ color: '#475569', fontSize: '0.9rem', marginTop: '6px' }}>Sign in to continue your global career journey.</p>
         </div>
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <Input label="Email Address" icon={Mail} value={email} onChange={(e) => setEmail(e.target.value)} required />
-          <Input label="Password" icon={Lock} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <Input label="Email Address" icon={Mail} type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="you@example.com" />
+          <Input label="Password" icon={Lock} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Enter password" />
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem' }}>
-            <Link to="/auth/forgot-password" style={{ color: '#818cf8' }}>Forgot password?</Link>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem' }}>
+            <Link to="/auth/forgot-password" style={{ color: '#2563eb', fontWeight: 600 }}>Forgot password?</Link>
+            <button type="button" style={{ background: 'transparent', border: 'none', color: '#475569', cursor: 'pointer' }}>Remember me</button>
           </div>
 
           <Button type="submit" variant="gradient" size="lg" disabled={loading}>
             {loading ? 'Authenticating...' : 'Sign In'}
           </Button>
+
+          <Button type="button" variant="secondary" size="lg">
+            Continue with Google
+          </Button>
         </form>
 
-        <p style={{ textAlign: 'center', color: '#94a3b8', fontSize: '0.85rem', marginTop: '24px' }}>
-          Don't have an account? <Link to="/auth/signup" style={{ color: '#818cf8', fontWeight: 600 }}>Create Account</Link>
+        <p style={{ textAlign: 'center', color: '#475569', fontSize: '0.85rem', marginTop: '24px' }}>
+          Don’t have an account? <Link to="/auth/signup" style={{ color: '#2563eb', fontWeight: 700 }}>Create account</Link>
         </p>
       </div>
     </div>
