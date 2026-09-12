@@ -1,62 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight, ShieldCheck, Zap, Globe, Cpu } from 'lucide-react';
+import { ArrowRight, Briefcase, UserRound, Search } from 'lucide-react';
 import Button from '../../components/common/Button';
 
 export const Landing = () => {
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg-dark)' }}>
-      {/* Hero Section */}
-      <section style={{ padding: '100px 24px 80px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-        <div style={{
-          position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)',
-          width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(99,102,241,0.2) 0%, rgba(0,0,0,0) 70%)',
-          borderRadius: '50%', pointerEvents: 'none'
-        }} />
-
-        <div className="glass-pill" style={{ marginBottom: '24px' }}>
-          <Sparkles size={14} color="#818cf8" /> Enterprise AI Career Platform 2.0
-        </div>
-
-        <h1 style={{ fontSize: '3.5rem', fontWeight: 800, color: '#fff', lineHeight: 1.15, maxWidth: '900px', margin: '0 auto 20px', fontFamily: 'Space Grotesk, sans-serif' }}>
-          Accelerate Your Global Tech Career with <span style={{ background: 'var(--grad-primary)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Autonomous AI</span>
+    <div style={{ minHeight: '100vh', background: '#f8fafc', color: '#0f172a' }}>
+      <section style={{ padding: '96px 24px 72px', textAlign: 'center', borderBottom: '1px solid #e2e8f0' }}>
+        <p style={{ color: '#2563eb', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', fontSize: '0.78rem', marginBottom: '18px' }}>Gez-Career</p>
+        <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.75rem)', fontWeight: 800, color: '#0f172a', lineHeight: 1.1, maxWidth: '780px', margin: '0 auto 20px', fontFamily: 'var(--font-heading)' }}>
+          Find jobs. Build your career.
         </h1>
-
-        <p style={{ fontSize: '1.2rem', color: '#94a3b8', maxWidth: '650px', margin: '0 auto 36px', lineHeight: 1.6 }}>
-          Automated ATS resume optimization, AI mock interviewer, real-time global job matching, and direct recruiter pipelines built for top 1% tech talent.
+        <p style={{ fontSize: '1.05rem', color: '#475569', maxWidth: '590px', margin: '0 auto 32px', lineHeight: 1.6 }}>
+          Search global opportunities, present your experience clearly, and stay organized through every application.
         </p>
 
-        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link to="/auth/signup">
             <Button variant="gradient" size="lg" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              Get Started Free <ArrowRight size={18} />
+              Get started <ArrowRight size={18} />
             </Button>
           </Link>
           <Link to="/auth/login">
-            <Button variant="secondary" size="lg">Explore Platform</Button>
+            <Button variant="outline" size="lg">Log in</Button>
           </Link>
         </div>
       </section>
 
-      {/* Feature Grid */}
-      <section style={{ padding: '60px 24px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+      <section style={{ padding: '56px 24px', maxWidth: '1080px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
           <div className="glass-card" style={{ padding: '28px' }}>
-            <Cpu size={32} color="#818cf8" style={{ marginBottom: '16px' }} />
-            <h3 style={{ fontSize: '1.25rem', color: '#fff', fontWeight: 700, marginBottom: '8px' }}>ATS Resume Copilot</h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.925rem', lineHeight: 1.6 }}>Real-time formatting score, keyword gap analysis, and instant AI resume rewriting.</p>
+            <Search size={24} color="#2563eb" style={{ marginBottom: '16px' }} />
+            <h3 style={{ fontSize: '1.15rem', color: '#0f172a', fontWeight: 700, marginBottom: '8px' }}>Search opportunities</h3>
+            <p style={{ color: '#475569', fontSize: '0.925rem', lineHeight: 1.6 }}>Browse roles by location, work mode, experience, and skills.</p>
           </div>
 
           <div className="glass-card" style={{ padding: '28px' }}>
-            <Zap size={32} color="#14b8a6" style={{ marginBottom: '16px' }} />
-            <h3 style={{ fontSize: '1.25rem', color: '#fff', fontWeight: 700, marginBottom: '8px' }}>AI Technical Interviewer</h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.925rem', lineHeight: 1.6 }}>Practice live technical and STAR-method behavioral questions with instant scoring.</p>
+            <UserRound size={24} color="#2563eb" style={{ marginBottom: '16px' }} />
+            <h3 style={{ fontSize: '1.15rem', color: '#0f172a', fontWeight: 700, marginBottom: '8px' }}>Build your profile</h3>
+            <p style={{ color: '#475569', fontSize: '0.925rem', lineHeight: 1.6 }}>Keep your experience, skills, and resume ready for employers.</p>
           </div>
 
           <div className="glass-card" style={{ padding: '28px' }}>
-            <Globe size={32} color="#ec4899" style={{ marginBottom: '16px' }} />
-            <h3 style={{ fontSize: '1.25rem', color: '#fff', fontWeight: 700, marginBottom: '8px' }}>Global Country & Salary Radar</h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.925rem', lineHeight: 1.6 }}>Explore verified compensation data across US, UK, EU, Canada, and global remote Hubs.</p>
+            <Briefcase size={24} color="#2563eb" style={{ marginBottom: '16px' }} />
+            <h3 style={{ fontSize: '1.15rem', color: '#0f172a', fontWeight: 700, marginBottom: '8px' }}>Track applications</h3>
+            <p style={{ color: '#475569', fontSize: '0.925rem', lineHeight: 1.6 }}>Keep each application and next step in one clear place.</p>
           </div>
         </div>
       </section>

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Bell, Sparkles, User, Briefcase } from 'lucide-react';
+import { Search, Bell, Briefcase, MessageCircle } from 'lucide-react';
 import Avatar from '../common/Avatar';
-import Badge from '../common/Badge';
 
 export const Header = () => {
   return (
@@ -19,10 +18,10 @@ export const Header = () => {
         <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: '180px' }}>
           <div style={{
             width: '38px', height: '38px', borderRadius: '12px',
-            background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
+            background: '#2563eb',
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}>
-            <Sparkles size={22} color="#fff" />
+            <Briefcase size={21} color="#fff" />
           </div>
           <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', fontFamily: 'Space Grotesk, sans-serif' }}>
             GEZ<span style={{ color: '#2563eb' }}>CAREER</span>
@@ -44,9 +43,8 @@ export const Header = () => {
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginLeft: '20px' }}>
-        <Link to="/ai/assistant" className="glass-pill" style={{ background: 'rgba(37,99,235,0.08)', border: '1px solid rgba(37,99,235,0.15)' }}>
-          <Sparkles size={14} color="#2563eb" />
-          <span style={{ color: '#1d4ed8', fontWeight: 600 }}>AI Suite</span>
+        <Link to="/messages" aria-label="Messages" style={{ color: '#475569', display: 'flex' }}>
+          <MessageCircle size={20} />
         </Link>
 
         <Link to="/recruiter/dashboard" style={{ color: '#475569', fontSize: '0.875rem', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '6px' }}>

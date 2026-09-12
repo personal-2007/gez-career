@@ -1,24 +1,21 @@
 /* Utility glass card styling */
 .glass-card {
   background: var(--grad-card);
-  backdrop-filter: var(--backdrop-blur);
-  -webkit-backdrop-filter: var(--backdrop-blur);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
-  transition: all var(--motion-base) ease;
+  transition: border-color var(--motion-base) ease, box-shadow var(--motion-base) ease;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.98);
   border-color: var(--border-glow);
   box-shadow: var(--shadow-glow);
 }
 
 .glass-pill {
-  background: rgba(37, 99, 235, 0.08);
+  background: #eff6ff;
   border: 1px solid rgba(37, 99, 235, 0.12);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   padding: 6px 12px;
   font-size: 0.825rem;
   color: var(--primary);
@@ -28,20 +25,20 @@
 }
 
 .btn-gradient {
-  background: var(--grad-primary);
+  background: var(--primary);
   color: var(--text-inverse);
   font-weight: 600;
   border: none;
   border-radius: var(--radius-sm);
   padding: 10px 20px;
   cursor: pointer;
-  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
-  transition: transform var(--motion-fast) ease, opacity var(--motion-fast) ease;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.18);
+  transition: background var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .btn-gradient:hover {
-  transform: translateY(-2px);
-  opacity: 0.97;
+  background: var(--primary-hover);
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
 }
 
 .input-shell {

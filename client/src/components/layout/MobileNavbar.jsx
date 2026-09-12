@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Search, Briefcase, Bot, User } from 'lucide-react';
+import { LayoutDashboard, Search, Users, MessageCircle, User } from 'lucide-react';
 
 export const MobileNavbar = () => {
   return (
@@ -11,11 +11,11 @@ export const MobileNavbar = () => {
       display: 'flex', alignItems: 'center', justifyContent: 'space-around',
       zIndex: 100
     }} className="hide-desktop">
-      <NavLink to="/dashboard" style={({ isActive }) => ({ color: isActive ? '#2563eb' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '48px', minHeight: '48px' })}><LayoutDashboard size={20} /></NavLink>
-      <NavLink to="/jobs/search" style={({ isActive }) => ({ color: isActive ? '#2563eb' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '48px', minHeight: '48px' })}><Search size={20} /></NavLink>
-      <NavLink to="/applications/me" style={({ isActive }) => ({ color: isActive ? '#2563eb' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '48px', minHeight: '48px' })}><Briefcase size={20} /></NavLink>
-      <NavLink to="/ai/assistant" style={({ isActive }) => ({ color: isActive ? '#2563eb' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '48px', minHeight: '48px' })}><Bot size={20} /></NavLink>
-      <NavLink to="/profile/me" style={({ isActive }) => ({ color: isActive ? '#2563eb' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '48px', minHeight: '48px' })}><User size={20} /></NavLink>
+      <NavLink aria-label="Home" to="/dashboard" style={({ isActive }) => ({ color: isActive ? '#2563eb' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '48px', minHeight: '48px' })}><LayoutDashboard size={20} /></NavLink>
+      <NavLink aria-label="Jobs" to="/jobs/search" style={({ isActive }) => ({ color: isActive ? '#2563eb' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '48px', minHeight: '48px' })}><Search size={20} /></NavLink>
+      <NavLink aria-label="Network" to="/networking/feed" style={({ isActive }) => ({ color: isActive ? '#2563eb' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '48px', minHeight: '48px' })}><Users size={20} /></NavLink>
+      <NavLink aria-label="Messages" to="/messages" style={({ isActive }) => ({ color: isActive ? '#2563eb' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '48px', minHeight: '48px' })}><MessageCircle size={20} /></NavLink>
+      <NavLink aria-label="Profile" to="/profile/me" style={({ isActive }) => ({ color: isActive ? '#2563eb' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '48px', minHeight: '48px' })}><User size={20} /></NavLink>
     </div>
   );
 };

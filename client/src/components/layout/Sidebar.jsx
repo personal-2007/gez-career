@@ -1,15 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Search, Briefcase, FileText, Bot, Users, DollarSign, BookOpen, Settings } from 'lucide-react';
+import { LayoutDashboard, Search, Briefcase, FileText, Users, MessageCircle, Bell, User, DollarSign, BookOpen, Settings } from 'lucide-react';
 
 export const Sidebar = () => {
   const menuItems = [
-    { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
-    { label: 'Job Search', path: '/jobs/search', icon: Search },
-    { label: 'My Applications', path: '/applications/me', icon: Briefcase },
-    { label: 'My Profile', path: '/profile/me', icon: FileText },
-    { label: 'AI Suite', path: '/ai/assistant', icon: Bot },
+    { label: 'Home', path: '/dashboard', icon: LayoutDashboard },
+    { label: 'Jobs', path: '/jobs/search', icon: Search },
+    { label: 'Applications', path: '/applications/me', icon: Briefcase },
     { label: 'Network', path: '/networking/feed', icon: Users },
+    { label: 'Messages', path: '/messages', icon: MessageCircle },
+    { label: 'Notifications', path: '/notifications', icon: Bell },
+    { label: 'Profile', path: '/profile/me', icon: User },
     { label: 'Salary', path: '/salary/explorer', icon: DollarSign },
     { label: 'Learning', path: '/learning/home', icon: BookOpen },
     { label: 'Settings', path: '/settings', icon: Settings }
