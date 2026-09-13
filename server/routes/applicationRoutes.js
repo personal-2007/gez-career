@@ -7,6 +7,7 @@ router.get('/', protect, getMyApplications);
 router.get('/me', protect, getMyApplications);
 router.get('/:id', protect, getApplicationById);
 router.post('/apply', protect, applyForJob);
+router.post('/', protect, applyForJob);
 router.put('/:id/status', protect, updateApplicationStatus);
 
 module.exports = router;
