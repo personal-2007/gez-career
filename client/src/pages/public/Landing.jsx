@@ -2,11 +2,32 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Briefcase, UserRound, Search } from 'lucide-react';
 import Button from '../../components/common/Button';
+import Logo from '../../components/common/Logo';
 
 export const Landing = () => {
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc', color: '#0f172a' }}>
-      <section style={{ padding: '96px 24px 72px', textAlign: 'center', borderBottom: '1px solid #e2e8f0' }}>
+      <header style={{
+        height: '70px',
+        padding: '0 24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderBottom: '1px solid #e2e8f0',
+        background: '#ffffff'
+      }}>
+        <Logo to="/" />
+        <div style={{ display: 'flex', gap: '12px' }}>
+          <Link to="/auth/login">
+            <Button variant="outline" size="sm">Log in</Button>
+          </Link>
+          <Link to="/auth/signup">
+            <Button variant="gradient" size="sm">Sign up</Button>
+          </Link>
+        </div>
+      </header>
+
+      <section style={{ padding: '80px 24px 72px', textAlign: 'center', borderBottom: '1px solid #e2e8f0' }}>
         <p style={{ color: '#2563eb', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', fontSize: '0.78rem', marginBottom: '18px' }}>Gez-Career</p>
         <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.75rem)', fontWeight: 800, color: '#0f172a', lineHeight: 1.1, maxWidth: '780px', margin: '0 auto 20px', fontFamily: 'var(--font-heading)' }}>
           Find jobs. Build your career.

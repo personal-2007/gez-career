@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { User, Mail, Lock, Sparkles } from 'lucide-react';
+import { User, Mail, Lock } from 'lucide-react';
 import Input from '../../components/common/Input';
 import Button from '../../components/common/Button';
+import { LogoSymbol } from '../../components/common/Logo';
 import { useAuth } from '../../hooks/useAuth';
 
 export const Signup = () => {
@@ -22,6 +23,9 @@ export const Signup = () => {
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', background: 'linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%)' }}>
       <div className="glass-card" style={{ padding: '36px', width: '100%', maxWidth: '480px', borderRadius: '20px' }}>
         <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+          <div style={{ display: 'inline-flex', justifyContent: 'center', marginBottom: '14px' }}>
+            <LogoSymbol size={48} />
+          </div>
           <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0f172a' }}>Create account</h2>
           <p style={{ color: '#475569', fontSize: '0.9rem' }}>Join your global career network.</p>
         </div>

@@ -1,14 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Sparkles, Rocket } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import Button from '../../components/common/Button';
+import { LogoSymbol } from '../../components/common/Logo';
 
 export const Welcome = () => {
   const navigate = useNavigate();
   return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', background: 'linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%)' }}>
       <div className="glass-card" style={{ padding: '40px', maxWidth: '560px', borderRadius: '24px', textAlign: 'center' }}>
-        <Rocket size={48} color="#2563eb" style={{ marginBottom: '18px' }} />
+        <div style={{ display: 'inline-flex', justifyContent: 'center', marginBottom: '18px' }}>
+          <LogoSymbol size={64} />
+        </div>
         <div className="glass-pill" style={{ marginBottom: '20px' }}>Global opportunity platform</div>
         <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.04em' }}>Your Career. Without Borders.</h2>
         <p style={{ color: '#475569', margin: '16px 0 28px', lineHeight: '1.7', fontSize: '1.02rem' }}>

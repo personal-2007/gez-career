@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+  </defs>
+  <!-- Rounded Container -->
+  <rect x="0" y="0" width="100" height="100" rx="26" fill="url(#logo-grad)" />
+  
+  <!-- Central Star Sparkle -->
+  <path d="M 50 22 C 50 41 59 50 78 50 C 59 50 50 59 50 78 C 50 59 41 50 22 50 C 41 50 50 41 50 22 Z" fill="#ffffff" />
+  
+  <!-- Top Left Sparkle -->
+  <path d="M 33 24 C 33 31 37 35 44 35 C 37 35 33 39 33 46 C 33 39 29 35 22 35 C 29 35 33 31 33 24 Z" fill="#ffffff" />
+  
+  <!-- Bottom Right Sparkle -->
+  <path d="M 67 54 C 67 61 71 65 78 65 C 71 65 67 69 67 76 C 67 69 63 65 56 65 C 63 65 67 61 67 54 Z" fill="#ffffff" />
+</svg>

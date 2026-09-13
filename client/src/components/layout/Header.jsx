@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, Bell, Briefcase, MessageCircle, Menu, PanelLeftClose, PanelLeftOpen, X, ShieldAlert } from 'lucide-react';
 import Avatar from '../common/Avatar';
+import Logo from '../common/Logo';
 import { useAuth } from '../../hooks/useAuth';
 
 export const Header = ({ sidebarCollapsed, sidebarOpen, onToggleSidebar }) => {
@@ -44,18 +45,7 @@ export const Header = ({ sidebarCollapsed, sidebarOpen, onToggleSidebar }) => {
             {sidebarOpen ? <X size={21} /> : <Menu size={21} />}
           </span>
         </button>
-        <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: '180px', textDecoration: 'none' }}>
-          <div style={{
-            width: '38px', height: '38px', borderRadius: '12px',
-            background: '#2563eb',
-            display: 'flex', alignItems: 'center', justifyContent: 'center'
-          }}>
-            <Briefcase size={21} color="#fff" />
-          </div>
-          <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', fontFamily: 'Inter, sans-serif' }}>
-            GEZ<span style={{ color: '#2563eb' }}>CAREER</span>
-          </span>
-        </Link>
+        <Logo to="/dashboard" />
 
         <div style={{ position: 'relative', width: 'min(420px, 40vw)', minWidth: '180px', flex: 1 }}>
           <Search size={16} style={{ position: 'absolute', left: '12px', top: '10px', color: '#64748b' }} />
