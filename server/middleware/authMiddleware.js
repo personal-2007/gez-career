@@ -2,8 +2,8 @@ const { verifyToken } = require('../utils/jwt');
 const { sendResponse } = require('../utils/response');
 
 const normalizeRole = (role) => {
-  if (!role) return 'user';
-  if (role === 'candidate') return 'user';
+  if (!role) return 'candidate';
+  if (role === 'user') return 'candidate';
   return role;
 };
 
@@ -22,7 +22,8 @@ const protect = (req, res, next) => {
 
   req.user = {
     ...decoded,
-    role: normalizeRole(decoded.role)
+    role: normalizeRole(decoded.role),
+    originalRole: decoded.role
   };
 
   next();
@@ -30,12 +31,21 @@ const protect = (req, res, next) => {
 
 const restrictTo = (...roles) => {
   return (req, res, next) => {
-    const currentRole = normalizeRole(req.user?.role);
-    if (!req.user || !roles.includes(currentRole)) {
-      return sendResponse(res, 403, false, 'You do not have permission to perform this action');
+    if (!req.user) {
+      return sendResponse(res, 401, false, 'Authentication required.');
+    }
+    const currentRole = req.user.role;
+    const rawRole = req.user.originalRole;
+    
+    // Check if role matches any allowed role (supporting candidate & user interchangeably)
+    const isAllowed = roles.some(r => r === currentRole || r === rawRole || (r === 'user' && currentRole === 'candidate') || (r === 'candidate' && currentRole === 'user'));
+
+    if (!isAllowed) {
+      return sendResponse(res, 403, false, 'Access denied. You do not have permission to perform this action.');
     }
     next();
   };
 };
 
 module.exports = { protect, restrictTo };
+

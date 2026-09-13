@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Search, Briefcase, FileText, Users, MessageCircle, Bell, User, DollarSign, BookOpen, Settings } from 'lucide-react';
+import { LayoutDashboard, Search, Briefcase, Users, MessageCircle, Bell, User, DollarSign, BookOpen, Settings, Sparkles } from 'lucide-react';
 
 export const Sidebar = ({ collapsed = false, open = false, onNavigate }) => {
   const menuItems = [
@@ -10,6 +10,7 @@ export const Sidebar = ({ collapsed = false, open = false, onNavigate }) => {
     { label: 'Network', path: '/networking/feed', icon: Users },
     { label: 'Messages', path: '/messages', icon: MessageCircle },
     { label: 'Notifications', path: '/notifications', icon: Bell },
+    { label: 'Career Tools', path: '/ai/assistant', icon: Sparkles },
     { label: 'Profile', path: '/profile/me', icon: User },
     { label: 'Salary', path: '/salary/explorer', icon: DollarSign },
     { label: 'Learning', path: '/learning/home', icon: BookOpen },
@@ -39,10 +40,10 @@ export const Sidebar = ({ collapsed = false, open = false, onNavigate }) => {
               display: 'flex', alignItems: 'center', gap: '12px',
               padding: '10px 14px', borderRadius: '12px',
               fontSize: '0.875rem', fontWeight: isActive ? 600 : 500,
-              color: isActive ? '#0f172a' : '#475569',
-              background: isActive ? 'linear-gradient(135deg, rgba(37,99,235,0.10), rgba(124,58,237,0.08))' : 'transparent',
+              color: isActive ? '#2563eb' : '#475569',
+              background: isActive ? '#eff6ff' : 'transparent',
               border: isActive ? '1px solid rgba(37,99,235,0.15)' : '1px solid transparent',
-              transition: 'all 0.2s ease'
+              transition: 'all 0.2s ease', textDecoration: 'none'
             })}
           >
             <Icon size={18} />
@@ -55,3 +56,4 @@ export const Sidebar = ({ collapsed = false, open = false, onNavigate }) => {
 };
 
 export default Sidebar;
+

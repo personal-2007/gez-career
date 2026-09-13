@@ -13,6 +13,10 @@ class MemoryDB {
     this.messages = [];
     this.notifications = [];
     this.interviews = [];
+    this.posts = [];
+    this.connections = [];
+    this.alerts = [];
+    this.courses = [];
     this.countries = [
       { id: 'c1', name: 'United States', code: 'US', jobCount: 1420 },
       { id: 'c2', name: 'United Kingdom', code: 'UK', jobCount: 890 },
@@ -21,12 +25,13 @@ class MemoryDB {
       { id: 'c5', name: 'Australia', code: 'AU', jobCount: 410 },
       { id: 'c6', name: 'Singapore', code: 'SG', jobCount: 380 },
       { id: 'c7', name: 'India', code: 'IN', jobCount: 1850 },
-      { id: 'c8', name: 'Remote', code: 'WW', jobCount: 3200 }
+      { id: 'c8', name: 'Remote / Global', code: 'WW', jobCount: 3200 }
     ];
   }
 }
 
 const dbInstance = new MemoryDB();
+let isMongoConnected = false;
 
 const connectDB = async () => {
   const mongoUri = process.env.MONGODB_URI;
@@ -36,6 +41,7 @@ const connectDB = async () => {
         useNewUrlParser: true,
         useUnifiedTopology: true
       });
+      isMongoConnected = true;
       console.log(`[GEZ-CAREER DB] Connected to MongoDB: ${conn.connection.host}`);
       return conn;
     } catch (err) {
@@ -47,4 +53,5 @@ const connectDB = async () => {
   return dbInstance;
 };
 
-module.exports = { connectDB, dbInstance, mongoose };
+module.exports = { connectDB, dbInstance, mongoose, isMongoConnected: () => isMongoConnected };
+
