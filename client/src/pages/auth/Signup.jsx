@@ -53,7 +53,6 @@ export const Signup = () => {
           </div>
 
           <Button type="submit" variant="gradient" size="lg">Continue to onboarding</Button>
-          <Button type="button" variant="secondary" size="lg">Continue with Google</Button>
         </form>
 
         <p style={{ textAlign: 'center', color: '#475569', fontSize: '0.85rem', marginTop: '24px' }}>

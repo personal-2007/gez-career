@@ -60,10 +60,6 @@ export const Login = () => {
           <Button type="submit" variant="gradient" size="lg" disabled={loading}>
             {loading ? 'Authenticating...' : 'Sign In'}
           </Button>
-
-          <Button type="button" variant="secondary" size="lg">
-            Continue with Google
-          </Button>
         </form>
 
         <p style={{ textAlign: 'center', color: '#475569', fontSize: '0.85rem', marginTop: '24px' }}>
