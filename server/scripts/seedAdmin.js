@@ -1,17 +1,20 @@
 require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
 
-const { dbInstance } = require('../config/database');
+const User = require('../models/User');
 const { hashPassword } = require('../utils/password');
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@gezcareer.com';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 
 const seedAdmin = async () => {
-  const existingAdmin = dbInstance.users.find((user) => user.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase());
+  const existingAdmin = await User.findOne({ email: ADMIN_EMAIL.toLowerCase() });
 
   if (existingAdmin) {
     if (existingAdmin.role !== 'admin') {
       existingAdmin.role = 'admin';
+      if (existingAdmin.save) {
+        await existingAdmin.save();
+      }
     }
     return existingAdmin;
   }
@@ -28,8 +31,7 @@ const seedAdmin = async () => {
     updatedAt: new Date().toISOString()
   };
 
-  dbInstance.users.push(adminUser);
-  return adminUser;
+  return User.create(adminUser);
 };
 
 if (require.main === module) {
